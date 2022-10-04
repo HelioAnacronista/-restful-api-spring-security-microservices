@@ -41,7 +41,7 @@ public class ControllerExceptionHandler {
 
         ValidationError err = new ValidationError(Instant.now(), status.value(), "Dados inválidos", request.getRequestURI());
 
-        for(FieldError f : e.getBindingResult().getFieldErrors()){
+        for (FieldError f : e.getBindingResult().getFieldErrors()) {
             err.addError(f.getField(), f.getDefaultMessage());
         }
         return ResponseEntity.status(status).body(err);
