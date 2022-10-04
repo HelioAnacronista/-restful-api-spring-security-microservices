@@ -13,6 +13,7 @@ import java.util.Arrays;
 
 @Configuration
 @EnableResourceServer
+//Controler de acesso
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
