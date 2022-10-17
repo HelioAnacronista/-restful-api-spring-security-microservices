@@ -1,6 +1,7 @@
 package github.helioanacronista.dscommerce.services;
 
 import github.helioanacronista.dscommerce.dto.ProductDTO;
+import github.helioanacronista.dscommerce.dto.ProductMinDTO;
 import github.helioanacronista.dscommerce.entities.Product;
 import github.helioanacronista.dscommerce.repository.ProductRepository;
 import github.helioanacronista.dscommerce.services.exceptions.DataBaseNotFoundException;
@@ -29,9 +30,9 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ProductDTO> findAll(String name, Pageable pageable) {
+    public Page<ProductMinDTO> findAll(String name, Pageable pageable) {
         Page<Product> result = productRepository.searchByName(name, pageable);
-        return result.map(x -> new ProductDTO(x));
+        return result.map(x -> new ProductMinDTO(x));
     }
 
     @Transactional
