@@ -1,7 +1,9 @@
 package github.helioanacronista.dscommerce.services;
 
+import github.helioanacronista.dscommerce.dto.CategoryDTO;
 import github.helioanacronista.dscommerce.dto.ProductDTO;
 import github.helioanacronista.dscommerce.dto.ProductMinDTO;
+import github.helioanacronista.dscommerce.entities.Category;
 import github.helioanacronista.dscommerce.entities.Product;
 import github.helioanacronista.dscommerce.repository.ProductRepository;
 import github.helioanacronista.dscommerce.services.exceptions.DataBaseNotFoundException;
@@ -72,6 +74,13 @@ public class ProductService {
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
         entity.setImgUrl(dto.getImgUrl());
+
+        entity.getCategories().clear();
+        for (CategoryDTO catDTO : dto.getCategories()) {
+            Category cat = new Category();
+            catDTO.setId(catDTO.getId());
+            entity.getCategories().add(cat);
+        }
     }
 
 }
