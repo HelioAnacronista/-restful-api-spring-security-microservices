@@ -5,6 +5,7 @@ import github.helioanacronista.dscommerce.entities.OrderItem;
 import github.helioanacronista.dscommerce.enums.OrderStatus;
 import lombok.*;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class OrderDTO {
 
     private ClientDTO client;
     private PaymentDTO payment;
+    @NotEmpty(message = "Deve ter pelo menos um item")
     private List<OrderItemDTO> items = new ArrayList<>();
 
     public OrderDTO(Order entity) {
